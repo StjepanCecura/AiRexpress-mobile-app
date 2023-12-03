@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
                                         newEmail -> navController.navigate("entry")
                                     /*
                                     * TODO
-                                    *  in the line send the navigation to login screen
+                                    *  in the line send the navigation to login screen later
                                     * */
                                 }
                             )
