@@ -7,6 +7,7 @@ import com.example.ws.models.RegistrationBody
 import com.example.ws.models.responses.RegisterdUser
 import com.example.ws.network.ResponseListener
 import com.example.ws.network.models.ErrorResponseBody
+import com.example.ws.network.models.ResponseBody
 import com.example.ws.network.models.SuccessfulResponseBody
 import com.example.ws.request_handlers.RegistrationRequestHandler
 
@@ -33,14 +34,8 @@ class RegistrationViewModel : ViewModel() {
                 onSuccess()
             }
 
-            override fun onErrorResponse(response: ErrorResponseBody) {
-                _errorMessage.value = response.message + " "
-                _errorMessage.value += when (response.error_code){
-                    103 -> "Email invalid."
-                    104 -> "Email already in use"
-                    //TODO put what happens if response is false
-                    else -> ""
-                }
+            override fun onErrorResponse(response: ResponseBody?) {
+                _errorMessage.value = response?.message
                 onFail()
             }
 
