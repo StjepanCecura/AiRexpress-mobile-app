@@ -17,7 +17,8 @@ import com.example.airexpress.R
 
 @Composable
 fun EntryScreen (
-    onRegistrationButtonClick: () -> Unit
+    onRegistrationButtonClick: () -> Unit,
+    onLoginButtonClick: () -> Unit
 ){
     Scaffold (
         topBar = {
@@ -61,6 +62,19 @@ fun EntryScreen (
                 modifier = Modifier.padding(vertical = 16.dp),
                 textAlign = TextAlign.Center
             )
+            Button(
+                onClick = onLoginButtonClick,
+                modifier = Modifier
+                    .fillMaxWidth(0.4f)
+                    .defaultMinSize(minWidth = 80.dp)
+                    .height(50.dp)
+            ){
+                Text(
+                    text = "Login",
+                    color = Color.White,
+                    style = MaterialTheme.typography.button
+                )
+            }
             Button(
                 onClick = onRegistrationButtonClick,
                 modifier = Modifier

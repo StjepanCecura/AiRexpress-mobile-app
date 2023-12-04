@@ -6,17 +6,20 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.airexpress.screens.EntryScreen
+import com.example.airexpress.screens.HomeScreen
+import com.example.airexpress.screens.LoginScreen
 import com.example.airexpress.screens.registration.RegistrationScreen
 import com.example.airexpress.ui.theme.AiRexpressTheme
+import com.example.ws.network.EmailPasswordLoginHandler
 
 class MainActivity : ComponentActivity() {
+    private val loginHandlers = listOf(EmailPasswordLoginHandler())
+    private val currentLoginHandler = loginHandlers[0]
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +36,9 @@ class MainActivity : ComponentActivity() {
                             EntryScreen(
                                 onRegistrationButtonClick = {
                                     navController.navigate("register")
+                                },
+                                onLoginButtonClick ={
+                                    navController.navigate("register")
                                 }
                             )
                         }
@@ -40,13 +46,20 @@ class MainActivity : ComponentActivity() {
                         composable("register"){
                             RegistrationScreen(
                                 onSuccessfulRegistration = {
-                                        newEmail -> navController.navigate("entry")
-                                    /*
-                                    * TODO
-                                    *  in the line send the navigation to login screen
-                                    * */
+                                        newEmail -> navController.navigate("login")
                                 }
                             )
+                        }
+                        composable("login"){
+                            LoginScreen(
+                                onSuccessfullLogin = {
+                                    navController.navigate("home")
+                            },
+                                loginHandler = currentLoginHandler
+                            )
+                        }
+                        composable("home"){
+                            HomeScreen()
                         }
                     }
 
