@@ -1,4 +1,4 @@
-package com.example.ws.network.Services
+package com.example.ws.network.services
 
 import com.example.ws.models.RegistrationBody
 import com.example.ws.models.responses.RegisterdUser
