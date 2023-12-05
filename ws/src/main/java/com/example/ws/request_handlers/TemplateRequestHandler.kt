@@ -5,7 +5,6 @@ import com.google.gson.Gson
 import com.example.ws.network.RequestHandler
 import com.example.ws.network.ResponseListener
 import com.example.ws.network.models.ErrorResponseBody
-import com.example.ws.network.models.ResponseBody
 import com.example.ws.network.models.SuccessfulResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,24 +19,21 @@ abstract class TemplateRequestHandler<T>  : RequestHandler<T> {
                 call: Call<SuccessfulResponseBody<T>>,
                 response: Response<SuccessfulResponseBody<T>>
             ) {
-
-
                 if (response.isSuccessful) {
                     if (response.body().success){
-                        responseListener.onSuccessfulResponse(response.body() as SuccessfulResponseBody<T>)
-                        val body = response.body() as SuccessfulResponseBody<T>
-                        Log.i("Success", "" + body.success)
+                        Log.i("response.body", "" + response.body())
+                        responseListener.onSuccessfulResponse(response.body())
                     }else{
                         val errorBodyString = response.errorBody()?.string()
+
                         val errorResponse = if (!errorBodyString.isNullOrBlank()) {
                             Gson().fromJson(errorBodyString, ErrorResponseBody::class.java)
                         } else {
-                            ErrorResponseBody(false,response.body().message)
+                            ErrorResponseBody(false, "Something went wrong -> no response body from server")
                         }
                         responseListener.onErrorResponse(errorResponse)
-                        Log.i("Failure", errorResponse.message)
-                    }
 
+                    }
                 } else {
                     val errorBodyString = response.errorBody()?.string()
                     val errorResponse = if (!errorBodyString.isNullOrBlank()) {
@@ -46,7 +42,6 @@ abstract class TemplateRequestHandler<T>  : RequestHandler<T> {
                         ErrorResponseBody(false,"No answer from server")
                     }
                     responseListener.onErrorResponse(errorResponse)
-                    Log.i("Failure", errorResponse.message)
                 }
             }
 
