@@ -5,7 +5,6 @@ import com.google.gson.Gson
 import com.example.ws.network.RequestHandler
 import com.example.ws.network.ResponseListener
 import com.example.ws.network.models.ErrorResponseBody
-import com.example.ws.network.models.ResponseBody
 import com.example.ws.network.models.SuccessfulResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,19 +22,22 @@ abstract class TemplateRequestHandler<T>  : RequestHandler<T> {
 
 
                 if (response.isSuccessful) {
+                    Log.i("response.isSuccessful: ", "" + response)
+                    Log.i("Response successful: ", "" + response.body().message)
                     if (response.body().success){
                         responseListener.onSuccessfulResponse(response.body() as SuccessfulResponseBody<T>)
                         val body = response.body() as SuccessfulResponseBody<T>
                         Log.i("Success", "" + body.success)
                     }else{
                         val errorBodyString = response.errorBody()?.string()
+
                         val errorResponse = if (!errorBodyString.isNullOrBlank()) {
                             Gson().fromJson(errorBodyString, ErrorResponseBody::class.java)
                         } else {
-                            ErrorResponseBody(false,response.body().message)
+                            ErrorResponseBody(false, "Something went wrong -> no response body from server")
                         }
                         responseListener.onErrorResponse(errorResponse)
-                        Log.i("Failure", errorResponse.message)
+
                     }
 
                 } else {
@@ -46,7 +48,6 @@ abstract class TemplateRequestHandler<T>  : RequestHandler<T> {
                         ErrorResponseBody(false,"No answer from server")
                     }
                     responseListener.onErrorResponse(errorResponse)
-                    Log.i("Failure", errorResponse.message)
                 }
             }
 

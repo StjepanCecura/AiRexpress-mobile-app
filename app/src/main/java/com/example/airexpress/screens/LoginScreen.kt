@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -45,6 +46,11 @@ fun LoginScreen(
             .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
+        Text(
+            text = "Login here.",
+            style = MaterialTheme.typography.h4
+
+        )
         if (errorMessage.isNotBlank()){
             Text(
                 text = errorMessage,
@@ -64,7 +70,6 @@ fun LoginScreen(
             onValueChange = {viewModelLogin.password.value = it}
         )
 
-        Spacer(modifier = Modifier.height(50.dp))
 
         StyledButton(
             label = "Login",

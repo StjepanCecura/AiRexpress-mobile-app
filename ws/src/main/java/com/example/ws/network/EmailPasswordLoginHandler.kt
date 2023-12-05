@@ -1,7 +1,9 @@
 package com.example.ws.network
 
+import android.util.Log
 import com.example.ws.network.models.LoggedInUserData
 import com.example.ws.network.models.LoginBody
+import com.example.ws.network.models.LoginResponseBody
 import com.example.ws.network.models.ResponseBody
 import com.example.ws.network.models.SuccessfulResponseBody
 import com.example.ws.request_handlers.LoginRequestHandler
@@ -20,11 +22,13 @@ class EmailPasswordLoginHandler : LoginHandler {
 
         loginRequestHandler.sendRequest(
             object : ResponseListener<LoggedInUserData>{
+
                 override fun onSuccessfulResponse(response: SuccessfulResponseBody<LoggedInUserData>) {
 
                     val loggedInUser = response.data[0]
                     loginListener.onSuccessfulLogin(
                         LoginUserData(
+                            loggedInUser.success!!,
                             loggedInUser.firstName!!,
                             loggedInUser.lastName!!,
                             loggedInUser.email!!
@@ -33,7 +37,12 @@ class EmailPasswordLoginHandler : LoginHandler {
                 }
 
                 override fun onErrorResponse(response: ResponseBody?) {
-                    loginListener.onFailedLogin("Something went wrong")
+                    if (response == null) {
+                        loginListener.onFailedLogin("Something went wrong")
+                    }else{
+                        loginListener.onFailedLogin("Message: "+response.message)
+                    }
+
                 }
 
                 override fun onNetworkFailure(t: Throwable) {

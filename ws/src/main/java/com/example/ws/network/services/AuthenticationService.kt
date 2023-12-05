@@ -9,11 +9,12 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface AuthenticationService {
     @POST("https://ai-rexpress-mobile-web-service-gylkx48qa-mfric20s-projects.vercel.app/api/users")
     fun registerUser(@Body registerBody: RegistrationBody): Call<SuccessfulResponseBody<RegisterdUser>>
 
-    @GET("https://ai-rexpress-mobile-web-service-r5ak6fe0n-mfric20s-projects.vercel.app/api/users?email=mfric20@foi.hr&password=matija123")
-    fun loginUser(@Body loginBody: LoginBody) :Call<SuccessfulResponseBody<LoggedInUserData>>
+    @GET("https://ai-rexpress-mobile-web-service-r5ak6fe0n-mfric20s-projects.vercel.app/api/users")
+    fun loginUser(@Query("email") email: String, @Query("password") password: String) :Call<SuccessfulResponseBody<LoggedInUserData>>
 }

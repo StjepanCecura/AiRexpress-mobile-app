@@ -9,7 +9,7 @@ import retrofit2.Call
 class LoginRequestHandler(private val requestBody: LoginBody) : TemplateRequestHandler<LoggedInUserData>() {
     override fun getServiceCall(): Call<SuccessfulResponseBody<LoggedInUserData>> {
         val service = NetworkService.authService
-        return service.loginUser(requestBody)
+        return service.loginUser(requestBody.email, requestBody.password)
     }
 
 }
