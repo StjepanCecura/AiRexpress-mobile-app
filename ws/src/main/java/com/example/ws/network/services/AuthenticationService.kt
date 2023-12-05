@@ -15,6 +15,6 @@ interface AuthenticationService {
     @POST("https://ai-rexpress-mobile-web-service-gylkx48qa-mfric20s-projects.vercel.app/api/users")
     fun registerUser(@Body registerBody: RegistrationBody): Call<SuccessfulResponseBody<RegisterdUser>>
 
-    @GET("https://ai-rexpress-mobile-web-service-r5ak6fe0n-mfric20s-projects.vercel.app/api/users")
+    @GET("https://ai-rexpress-mobile-web-service-git-air-c357eb-mfric20s-projects.vercel.app//api/users")
     fun loginUser(@Query("email") email: String, @Query("password") password: String) :Call<SuccessfulResponseBody<LoggedInUserData>>
 }

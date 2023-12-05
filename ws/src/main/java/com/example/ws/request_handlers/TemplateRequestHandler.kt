@@ -19,15 +19,10 @@ abstract class TemplateRequestHandler<T>  : RequestHandler<T> {
                 call: Call<SuccessfulResponseBody<T>>,
                 response: Response<SuccessfulResponseBody<T>>
             ) {
-
-
                 if (response.isSuccessful) {
-                    Log.i("response.isSuccessful: ", "" + response)
-                    Log.i("Response successful: ", "" + response.body().message)
                     if (response.body().success){
-                        responseListener.onSuccessfulResponse(response.body() as SuccessfulResponseBody<T>)
-                        val body = response.body() as SuccessfulResponseBody<T>
-                        Log.i("Success", "" + body.success)
+                        Log.i("response.body", "" + response.body())
+                        responseListener.onSuccessfulResponse(response.body())
                     }else{
                         val errorBodyString = response.errorBody()?.string()
 
@@ -39,7 +34,6 @@ abstract class TemplateRequestHandler<T>  : RequestHandler<T> {
                         responseListener.onErrorResponse(errorResponse)
 
                     }
-
                 } else {
                     val errorBodyString = response.errorBody()?.string()
                     val errorResponse = if (!errorBodyString.isNullOrBlank()) {

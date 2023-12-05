@@ -25,15 +25,9 @@ class EmailPasswordLoginHandler : LoginHandler {
 
                 override fun onSuccessfulResponse(response: SuccessfulResponseBody<LoggedInUserData>) {
 
-                    val loggedInUser = response.data[0]
-                    loginListener.onSuccessfulLogin(
-                        LoginUserData(
-                            loggedInUser.success!!,
-                            loggedInUser.firstName!!,
-                            loggedInUser.lastName!!,
-                            loggedInUser.email!!
-                        )
-                    )
+                    val loggedInUser = LoginUserData(true, "", "", email)
+                    loginListener.onSuccessfulLogin(loggedInUser)
+
                 }
 
                 override fun onErrorResponse(response: ResponseBody?) {
