@@ -59,7 +59,20 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable("home"){
-                            HomeScreen()
+                            HomeScreen( //TODO insert navigation routes here
+                                onQrCodeButtonClick = {
+
+                                },
+                                onBarcodeButtonClick = {
+
+                                },
+                                onTextButtonClick = {
+
+                                },
+                                onLogoutButtonClick = {
+                                    navController.navigate("entry")
+                                }
+                            )
                         }
                     }
 

@@ -26,7 +26,7 @@ fun EntryScreen (
                 color = MaterialTheme.colors.primary,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(10.dp)
+                    .padding(20.dp)
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.airexpresslogo),
