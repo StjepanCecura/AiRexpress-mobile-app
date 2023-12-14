@@ -25,18 +25,15 @@ class EmailPasswordLoginHandler : LoginHandler {
 
                 override fun onSuccessfulResponse(response: SuccessfulResponseBody<LoggedInUserData>) {
 
-                    val loggedInUser = LoginUserData(true, "", "", email)
+                    val responseData = response.data[0]
+
+                    val loggedInUser = LoginUserData(responseData.success, responseData.firstName, responseData.lastName, responseData.email, responseData.jwt)
                     loginListener.onSuccessfulLogin(loggedInUser)
 
                 }
 
                 override fun onErrorResponse(response: ResponseBody?) {
-                    if (response == null) {
-                        loginListener.onFailedLogin("Something went wrong")
-                    }else{
-                        loginListener.onFailedLogin("Message: "+response.message)
-                    }
-
+                    loginListener.onFailedLogin("Please enter valid credentials!")
                 }
 
                 override fun onNetworkFailure(t: Throwable) {
