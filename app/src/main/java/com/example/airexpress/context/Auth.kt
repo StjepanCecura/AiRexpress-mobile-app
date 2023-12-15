@@ -3,5 +3,5 @@ package com.example.airexpress.context
 import com.example.ws.network.LoginUserData
 
 object Auth {
-    var loggedInUserData: LoginUserData? = null
+    var loggedInUser: LoginUserData? = null
 }
