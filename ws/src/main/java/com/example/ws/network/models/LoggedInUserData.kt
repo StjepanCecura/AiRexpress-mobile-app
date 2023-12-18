@@ -7,5 +7,5 @@ class LoggedInUserData (
     @SerializedName("email") var email: String? = null,
     @SerializedName("firstName") var firstName: String? = null,
     @SerializedName("lastName") var lastName: String? = null,
-    @SerializedName("lastName") var jwt: String? = null,
+    @SerializedName("jwt") var jwt: String? = null,
 )
