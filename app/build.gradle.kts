@@ -52,6 +52,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
     implementation (project(":ws"))
+    implementation (project(":scanner"))
 
 
     implementation("androidx.navigation:navigation-compose:2.7.5")
