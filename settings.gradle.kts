@@ -16,3 +16,5 @@ dependencyResolutionManagement {
 rootProject.name = "AiRexpress"
 include(":app")
 include(":ws")
+include(":qrcodescanner")
+include(":scanner")

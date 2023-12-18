@@ -12,6 +12,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/qrcodescanner" />
+            <option value="$PROJECT_DIR$/scanner" />
             <option value="$PROJECT_DIR$/ws" />
           </set>
         </option>
