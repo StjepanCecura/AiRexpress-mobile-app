@@ -26,9 +26,7 @@ import com.example.airexpress.R
 
 @Composable
 fun HomeScreen(
-    onQrCodeButtonClick: () -> Unit,
-    onBarcodeButtonClick: () -> Unit,
-    onTextButtonClick: () -> Unit,
+    onScannerButtonClick: () -> Unit,
     onLogoutButtonClick: () -> Unit
 ){
     Scaffold (
@@ -68,40 +66,14 @@ fun HomeScreen(
             verticalArrangement = Arrangement.SpaceAround
         ){
             Button(
-                onClick = onQrCodeButtonClick,
+                onClick = onScannerButtonClick,
                 modifier = Modifier
                     .fillMaxWidth(0.4f)
                     .defaultMinSize(minWidth = 80.dp)
                     .height(50.dp)
             ){
                 Text(
-                    text = "Scan QR code",
-                    color = Color.White,
-                    style = MaterialTheme.typography.button
-                )
-            }
-            Button(
-                onClick = onBarcodeButtonClick,
-                modifier = Modifier
-                    .fillMaxWidth(0.4f)
-                    .defaultMinSize(minWidth = 80.dp)
-                    .height(50.dp)
-            ){
-                Text(
-                    text = "Scan barcode",
-                    color = Color.White,
-                    style = MaterialTheme.typography.button
-                )
-            }
-            Button(
-                onClick = onTextButtonClick,
-                modifier = Modifier
-                    .fillMaxWidth(0.4f)
-                    .defaultMinSize(minWidth = 80.dp)
-                    .height(50.dp)
-            ){
-                Text(
-                    text = "Scan text",
+                    text = "Scanner",
                     color = Color.White,
                     style = MaterialTheme.typography.button
                 )

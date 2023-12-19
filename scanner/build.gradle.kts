@@ -46,7 +46,6 @@ android {
 dependencies {
 
     implementation (project(":ws"))
-    implementation (project(":qrcodescanner"))
 
     implementation ("androidx.camera:camera-camera2:1.3.0-alpha07")
     implementation ("androidx.camera:camera-lifecycle:1.3.0-alpha07")
