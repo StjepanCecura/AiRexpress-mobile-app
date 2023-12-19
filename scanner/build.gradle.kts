@@ -53,7 +53,8 @@ dependencies {
     implementation ("androidx.camera:camera-extensions:1.3.0-alpha07")
 
     implementation ("com.google.accompanist:accompanist-permissions:0.33.2-alpha")
-    implementation("androidx.compose.material:material:1.5.4")
+    implementation ("androidx.compose.material:material:1.5.4")
+    implementation ("com.squareup.retrofit2:converter-gson:2.5.0")
 
     implementation("androidx.navigation:navigation-compose:2.7.5")
     implementation("androidx.activity:activity-compose:1.8.1")

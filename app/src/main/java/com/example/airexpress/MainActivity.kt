@@ -60,7 +60,7 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable("home"){
-                            HomeScreen( //TODO insert navigation routes here
+                            HomeScreen(
                                 onScannerButtonClick = {
                                     navController.navigate("scan")
                                 },
