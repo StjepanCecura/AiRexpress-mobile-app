@@ -3,8 +3,7 @@ package com.example.ws.network.services
 import com.example.ws.models.RegistrationBody
 import com.example.ws.models.responses.RegisterdUser
 import com.example.ws.network.models.LoggedInUserData
-import com.example.ws.network.models.LoginBody
-import com.example.ws.network.models.SuccessfulResponseBody
+import com.example.core.network.SuccessfulResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

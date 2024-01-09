@@ -2,7 +2,7 @@ package com.example.ws.request_handlers
 
 import com.example.ws.network.models.LoggedInUserData
 import com.example.ws.network.models.LoginBody
-import com.example.ws.network.models.SuccessfulResponseBody
+import com.example.core.network.SuccessfulResponseBody
 import com.example.ws.network.services.NetworkService
 import retrofit2.Call
 

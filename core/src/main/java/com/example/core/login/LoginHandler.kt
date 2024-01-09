@@ -1,4 +1,4 @@
-package com.example.ws.network
+package com.example.core.login
 
 interface LoginHandler {
 

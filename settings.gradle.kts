@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "AiRexpress"
 include(":app")
 include(":ws")
+include(":core")

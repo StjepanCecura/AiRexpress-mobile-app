@@ -1,4 +1,4 @@
-package com.example.airexpress.screens.registration
+package com.example.airexpress.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

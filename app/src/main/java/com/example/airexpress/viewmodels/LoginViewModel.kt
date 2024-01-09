@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.airexpress.context.Auth
-import com.example.ws.network.EmailPasswordLoginToken
-import com.example.ws.network.LoginHandler
-import com.example.ws.network.LoginOutcomeListener
-import com.example.ws.network.LoginUserData
+import com.example.core.login.EmailPasswordLoginToken
+import com.example.core.login.LoginHandler
+import com.example.core.login.LoginOutcomeListener
+import com.example.core.login.LoginUserData
 
 class LoginViewModel : ViewModel() {
     val email: MutableLiveData<String> = MutableLiveData("")
@@ -21,7 +21,7 @@ class LoginViewModel : ViewModel() {
         onFailedLogin: () -> Unit,
         loginToken: EmailPasswordLoginToken
     ) {
-        loginHandler.handleLogin(object : LoginOutcomeListener{
+        loginHandler.handleLogin(object : LoginOutcomeListener {
             override fun onSuccessfulLogin(loginUserData: LoginUserData) {
                 Auth.loggedInUser = loginUserData
                 onSuccessfulLogin()

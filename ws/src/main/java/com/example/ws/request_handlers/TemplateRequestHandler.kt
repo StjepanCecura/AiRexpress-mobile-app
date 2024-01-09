@@ -2,10 +2,10 @@ package com.example.ws.request_handlers
 
 import android.util.Log
 import com.google.gson.Gson
-import com.example.ws.network.RequestHandler
-import com.example.ws.network.ResponseListener
-import com.example.ws.network.models.ErrorResponseBody
-import com.example.ws.network.models.SuccessfulResponseBody
+import com.example.core.RequestHandler
+import com.example.core.ResponseListener
+import com.example.core.network.ErrorResponseBody
+import com.example.core.network.SuccessfulResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

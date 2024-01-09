@@ -1,3 +1,3 @@
-package com.example.ws.network.models
+package com.example.core.network
 
 open class ResponseBody(val success: Boolean, val message: String)

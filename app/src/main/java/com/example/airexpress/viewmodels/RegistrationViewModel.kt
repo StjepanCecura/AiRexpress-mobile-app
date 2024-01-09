@@ -5,10 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.ws.models.RegistrationBody
 import com.example.ws.models.responses.RegisterdUser
-import com.example.ws.network.ResponseListener
-import com.example.ws.network.models.ErrorResponseBody
-import com.example.ws.network.models.ResponseBody
-import com.example.ws.network.models.SuccessfulResponseBody
+import com.example.core.ResponseListener
+import com.example.core.network.ResponseBody
+import com.example.core.network.SuccessfulResponseBody
 import com.example.ws.request_handlers.RegistrationRequestHandler
 
 class RegistrationViewModel : ViewModel() {
@@ -29,7 +28,7 @@ class RegistrationViewModel : ViewModel() {
         )
         val registrationRequestHandler = RegistrationRequestHandler(requestBody)
 
-        registrationRequestHandler.sendRequest(object: ResponseListener<RegisterdUser>{
+        registrationRequestHandler.sendRequest(object: ResponseListener<RegisterdUser> {
             override fun onSuccessfulResponse(response: SuccessfulResponseBody<RegisterdUser>) {
                 onSuccess()
             }
