@@ -23,7 +23,7 @@ class LoginViewModel : ViewModel() {
     ) {
         loginHandler.handleLogin(object : LoginOutcomeListener{
             override fun onSuccessfulLogin(loginUserData: LoginUserData) {
-                Auth.loggedInUserData = loginUserData
+                Auth.loggedInUser = loginUserData
                 onSuccessfulLogin()
             }
 
