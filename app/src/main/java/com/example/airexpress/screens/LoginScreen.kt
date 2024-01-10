@@ -2,9 +2,7 @@ package com.example.airexpress.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -24,8 +22,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.airexpress.ui.components.PasswordTextField
 import com.example.airexpress.ui.components.StyledTextField
 import com.example.airexpress.ui.theme.StyledButton
-import com.example.ws.network.EmailPasswordLoginToken
-import com.example.ws.network.LoginHandler
+import com.example.core.login.EmailPasswordLoginToken
+import com.example.core.login.LoginHandler
 
 @Composable
 fun LoginScreen(

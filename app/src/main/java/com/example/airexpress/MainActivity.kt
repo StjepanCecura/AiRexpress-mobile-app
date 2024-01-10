@@ -13,7 +13,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.airexpress.screens.EntryScreen
 import com.example.airexpress.screens.HomeScreen
 import com.example.airexpress.screens.LoginScreen
-import com.example.airexpress.screens.registration.RegistrationScreen
+import com.example.airexpress.screens.RegistrationScreen
 import com.example.airexpress.ui.theme.AiRexpressTheme
 import com.example.ws.network.EmailPasswordLoginHandler
 

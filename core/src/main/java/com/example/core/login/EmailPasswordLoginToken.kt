@@ -1,4 +1,4 @@
-package com.example.ws.network
+package com.example.core.login
 
 class EmailPasswordLoginToken(email: String, password: String) {
     private val authorizers = mapOf(

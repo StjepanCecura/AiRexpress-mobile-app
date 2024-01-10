@@ -1,4 +1,4 @@
-package com.example.ws.network.models
+package com.example.core.network
 
 class ErrorResponseBody(
     success: Boolean,

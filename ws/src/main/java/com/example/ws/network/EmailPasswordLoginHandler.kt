@@ -1,11 +1,14 @@
 package com.example.ws.network
 
-import android.util.Log
+import com.example.core.login.EmailPasswordLoginToken
+import com.example.core.login.LoginHandler
+import com.example.core.login.LoginOutcomeListener
+import com.example.core.login.LoginUserData
 import com.example.ws.network.models.LoggedInUserData
 import com.example.ws.network.models.LoginBody
-import com.example.ws.network.models.LoginResponseBody
-import com.example.ws.network.models.ResponseBody
-import com.example.ws.network.models.SuccessfulResponseBody
+import com.example.core.network.ResponseBody
+import com.example.core.ResponseListener
+import com.example.core.network.SuccessfulResponseBody
 import com.example.ws.request_handlers.LoginRequestHandler
 
 class EmailPasswordLoginHandler : LoginHandler {
@@ -21,7 +24,7 @@ class EmailPasswordLoginHandler : LoginHandler {
         val loginRequestHandler = LoginRequestHandler(LoginBody(email, password))
 
         loginRequestHandler.sendRequest(
-            object : ResponseListener<LoggedInUserData>{
+            object : ResponseListener<LoggedInUserData> {
 
                 override fun onSuccessfulResponse(response: SuccessfulResponseBody<LoggedInUserData>) {
 
