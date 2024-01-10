@@ -54,6 +54,7 @@ dependencies {
 
     implementation (project(":ws"))
     implementation (project(":core"))
+    implementation (project(":qrscanner"))
 
 
     implementation("androidx.navigation:navigation-compose:2.7.5")

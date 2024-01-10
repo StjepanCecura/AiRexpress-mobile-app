@@ -10,11 +10,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.airexpress.context.Auth
 import com.example.airexpress.screens.EntryScreen
 import com.example.airexpress.screens.HomeScreen
 import com.example.airexpress.screens.LoginScreen
 import com.example.airexpress.screens.RegistrationScreen
 import com.example.airexpress.ui.theme.AiRexpressTheme
+import com.example.qrscanner.screens.qrScannerScreen
 import com.example.ws.network.EmailPasswordLoginHandler
 
 class MainActivity : ComponentActivity() {
@@ -59,20 +61,21 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable("home"){
-                            HomeScreen( //TODO insert navigation routes here
+                            HomeScreen(
                                 onQrCodeButtonClick = {
-
-                                },
-                                onBarcodeButtonClick = {
-
+                                    navController.navigate("qr")
                                 },
                                 onTextButtonClick = {
 
                                 },
                                 onLogoutButtonClick = {
+                                    Auth.loggedInUser = null
                                     navController.navigate("entry")
                                 }
                             )
+                        }
+                        composable("qr"){
+                            qrScannerScreen(Auth.loggedInUser)
                         }
                     }
 
