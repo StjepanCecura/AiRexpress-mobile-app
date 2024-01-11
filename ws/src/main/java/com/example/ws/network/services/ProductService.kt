@@ -10,5 +10,5 @@ import retrofit2.http.Query
 
 interface ProductService {
     @GET("https://ai-rexpress-mobile-web-service-git-air-a85499-mfric20s-projects.vercel.app/api/product")
-    fun getProduct(@Header("Authorization") jwt: String?, @Query("variantKey") variantKey: String?) : Call<SuccessfulResponseBody<ScannedProductData>>
+    fun getProduct(@Header("Bearer") jwt: String?, @Query("variantKey") variantKey: String?) : Call<SuccessfulResponseBody<ScannedProductData>>
 }

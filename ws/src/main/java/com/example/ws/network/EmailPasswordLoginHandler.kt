@@ -35,7 +35,7 @@ class EmailPasswordLoginHandler : LoginHandler {
 
                 }
 
-                override fun onErrorResponse(response: ResponseBody?) {
+                override fun onErrorResponse(response: ResponseBody) {
                     loginListener.onFailedLogin("Please enter valid credentials!")
                 }
 

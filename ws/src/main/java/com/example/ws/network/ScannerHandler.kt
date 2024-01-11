@@ -1,5 +1,6 @@
 package com.example.ws.network
 
+import android.util.Log
 import com.example.core.ResponseListener
 import com.example.core.network.ResponseBody
 import com.example.core.network.SuccessfulResponseBody
@@ -34,12 +35,13 @@ class ScannerHandler : Scanner{
                     scanListener.onSuccessfulScan(scannedProduct)
                 }
 
-                override fun onErrorResponse(response: ResponseBody?) {
+                override fun onErrorResponse(response: ResponseBody) {
                     scanListener.onFailedScan("QR Code not good")
                 }
 
                 override fun onNetworkFailure(t: Throwable) {
                     scanListener.onFailedScan("Could not connect to network")
+
                 }
 
             }

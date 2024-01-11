@@ -10,6 +10,6 @@ import retrofit2.Call
 class ScanRequestHandler(private val requestBody: ProductRequestBody) : TemplateRequestHandler<ScannedProductData>() {
     override fun getServiceCall(): Call<SuccessfulResponseBody<ScannedProductData>> {
         val service = NetworkService.productService
-        return service.getProduct(requestBody.key, requestBody.jwt)
+        return service.getProduct(requestBody.jwt, requestBody.key)
     }
 }
