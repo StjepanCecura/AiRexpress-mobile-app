@@ -64,7 +64,7 @@ fun HomeScreen(
                 .fillMaxHeight()
                 .padding(it),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceAround
+            verticalArrangement = Arrangement.Center
         ){
             Button(
                 onClick = onQrCodeButtonClick,

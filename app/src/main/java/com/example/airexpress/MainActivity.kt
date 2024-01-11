@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val navController = rememberNavController()
 
-                    NavHost(navController, startDestination = "entry"){
+                    NavHost(navController, startDestination = "qr"){
                         composable("entry"){
                             EntryScreen(
                                 onRegistrationButtonClick = {
