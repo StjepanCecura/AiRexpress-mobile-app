@@ -3,7 +3,7 @@ package com.example.airexpress.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.airexpress.context.Auth
+import com.example.core.context.Auth
 import com.example.core.login.EmailPasswordLoginToken
 import com.example.core.login.LoginHandler
 import com.example.core.login.LoginOutcomeListener

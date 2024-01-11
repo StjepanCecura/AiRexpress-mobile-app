@@ -28,7 +28,7 @@ import com.example.core.login.LoginHandler
 @Composable
 fun LoginScreen(
     viewModelLogin: LoginViewModel = viewModel(),
-    onSuccessfullLogin: () -> Unit,
+    onSuccessfulLogin: () -> Unit,
     loginHandler: LoginHandler
     ){
     val email = viewModelLogin.email.observeAsState().value ?: ""
@@ -79,7 +79,7 @@ fun LoginScreen(
                         loginHandler,
                         onSuccessfulLogin = {
                             isAwaitingResposne = false
-                            onSuccessfullLogin()
+                            onSuccessfulLogin()
                         },
                         onFailedLogin = {
                             isAwaitingResposne = false

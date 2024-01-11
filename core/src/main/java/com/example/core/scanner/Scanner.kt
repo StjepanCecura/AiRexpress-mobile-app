@@ -1,7 +1,6 @@
 package com.example.core.scanner
 
 interface Scanner {
-    fun getProduct (productVariantKey : String, jwtToken : String)
-    fun onSuccess ()
-    fun onFailure ()
+    fun handleScan (scanListener: ScanOutcomeListener, key: String?, jwt: String?)
+
 }

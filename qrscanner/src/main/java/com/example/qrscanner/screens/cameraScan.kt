@@ -25,17 +25,21 @@ import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.core.context.Auth
+import com.example.core.scanner.viewmodels.ScanViewModel
 import com.example.qrscanner.Scanner
+import com.example.ws.network.ScannerHandler
 import kotlinx.coroutines.launch
 
 @Composable
 fun CameraScan(
-
+    viewModelCameraScan: ScanViewModel = viewModel(),
+    onSuccessfulCameraScan: () -> Unit,
+    scanHandlerCamera: ScannerHandler
 ){
     lateinit var scanner: Scanner
     val context = LocalContext.current
-    val lifecycleOwner = LocalLifecycleOwner.current
-    val cameraController = remember { LifecycleCameraController(context) }
     scanner = Scanner(context)
 
     Surface(
@@ -44,7 +48,10 @@ fun CameraScan(
         val codeResults = scanner.codeResult.collectAsStateWithLifecycle()
         Scan(
             scanner::startScan,
-            codeResults.value
+            codeResults.value,
+            viewModelCameraScan,
+            onSuccessfulCameraScan,
+            scanHandlerCamera
         )
     }
 
@@ -53,8 +60,14 @@ fun CameraScan(
 @Composable
 private fun Scan(
     onScan: suspend () -> Unit,
-    value: String?
+    value: String?,
+    viewModelCameraScan: ScanViewModel = viewModel(),
+    onSuccessfulCameraScan: () -> Unit,
+    scanHandlerCamera: ScannerHandler
 ){
+    viewModelCameraScan.key = value
+    val jwt = Auth.loggedInUser?.jwt
+    viewModelCameraScan.jwt = jwt
     val scope = rememberCoroutineScope()
     Column(
         modifier = Modifier
@@ -70,7 +83,6 @@ private fun Scan(
                 .height(50.dp),
             onClick = {
                 scope.launch{
-                    Log.i("Scope launch", "Scope started")
                     onScan()
                 }
         }) {
@@ -80,12 +92,13 @@ private fun Scan(
                 style = MaterialTheme.typography.button
             )
         }
-        Spacer(modifier = Modifier.height(20.dp))
-        Text(
-            text = value ?: "00000000",
-            style = MaterialTheme.typography.h4
-        )
-        
+        if (value != null){
+            viewModelCameraScan.scan(
+                scanHandlerCamera,
+                onSuccessfulScan = onSuccessfulCameraScan,
+                onFailedScan = {}
+            )
+        }
     }
 }
 

@@ -9,8 +9,9 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.core.login.LoginUserData
-import com.example.qrscanner.context.Auth
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.ws.network.ScannerHandler
+import com.example.core.scanner.viewmodels.ScanViewModel
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionState
 import com.google.accompanist.permissions.isGranted
@@ -18,8 +19,11 @@ import com.google.accompanist.permissions.rememberPermissionState
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
-fun qrScannerScreen(user : LoginUserData?){
-    Auth.loggedInUser = user
+fun qrScannerScreen(
+    viewModelScan: ScanViewModel = viewModel(),
+    onSuccessfulScan: () -> Unit,
+    scanHandler: ScannerHandler
+){
     Scaffold(
         modifier = Modifier.padding(10.dp)
     ) {
@@ -33,7 +37,10 @@ fun qrScannerScreen(user : LoginUserData?){
 
             screenContent(
                 hasPermission = cameraPermissionState.status.isGranted,
-                onRequestPermission = cameraPermissionState::launchPermissionRequest
+                onRequestPermission = cameraPermissionState::launchPermissionRequest,
+                viewModelScan,
+                onSuccessfulScan,
+                scanHandler
             )
 
         }
@@ -43,10 +50,13 @@ fun qrScannerScreen(user : LoginUserData?){
 @Composable
 private fun screenContent(
     hasPermission: Boolean,
-    onRequestPermission: () -> Unit
+    onRequestPermission: () -> Unit,
+    viewModelScan: ScanViewModel = viewModel(),
+    onSuccessfulScan: () -> Unit,
+    scanHandler: ScannerHandler
 ){
     if (hasPermission){
-        CameraScan()
+        CameraScan(viewModelScan, onSuccessfulScan, scanHandler)
     }else{
         noPermissionScreen(onRequestPermission)
     }
