@@ -33,7 +33,7 @@ class RegistrationViewModel : ViewModel() {
                 onSuccess()
             }
 
-            override fun onErrorResponse(response: ResponseBody?) {
+            override fun onErrorResponse(response: ResponseBody) {
                 _errorMessage.value = response?.message
                 onFail()
             }

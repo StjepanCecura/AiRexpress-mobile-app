@@ -23,11 +23,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.airexpress.R
+import com.example.ws.network.ScannerHandler
 
 @Composable
 fun HomeScreen(
     onQrCodeButtonClick: () -> Unit,
-    onBarcodeButtonClick: () -> Unit,
     onTextButtonClick: () -> Unit,
     onLogoutButtonClick: () -> Unit
 ){
@@ -65,7 +65,7 @@ fun HomeScreen(
                 .fillMaxHeight()
                 .padding(it),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceAround
+            verticalArrangement = Arrangement.Center
         ){
             Button(
                 onClick = onQrCodeButtonClick,
@@ -73,22 +73,9 @@ fun HomeScreen(
                     .fillMaxWidth(0.4f)
                     .defaultMinSize(minWidth = 80.dp)
                     .height(50.dp)
-            ){
+            ) {
                 Text(
                     text = "Scan QR code",
-                    color = Color.White,
-                    style = MaterialTheme.typography.button
-                )
-            }
-            Button(
-                onClick = onBarcodeButtonClick,
-                modifier = Modifier
-                    .fillMaxWidth(0.4f)
-                    .defaultMinSize(minWidth = 80.dp)
-                    .height(50.dp)
-            ){
-                Text(
-                    text = "Scan barcode",
                     color = Color.White,
                     style = MaterialTheme.typography.button
                 )

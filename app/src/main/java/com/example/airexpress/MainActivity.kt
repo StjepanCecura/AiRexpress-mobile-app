@@ -10,16 +10,22 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.core.context.Auth
 import com.example.airexpress.screens.EntryScreen
 import com.example.airexpress.screens.HomeScreen
 import com.example.airexpress.screens.LoginScreen
+import com.example.airexpress.screens.ProductEdit
 import com.example.airexpress.screens.RegistrationScreen
 import com.example.airexpress.ui.theme.AiRexpressTheme
+import com.example.ws.network.ScannerHandler
+import com.example.qrscanner.screens.qrScannerScreen
 import com.example.ws.network.EmailPasswordLoginHandler
 
 class MainActivity : ComponentActivity() {
     private val loginHandlers = listOf(EmailPasswordLoginHandler())
     private val currentLoginHandler = loginHandlers[0]
+    private val scanHandlers = listOf(ScannerHandler())
+    private val currentScanHandler = scanHandlers[0]
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,27 +58,36 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("login"){
                             LoginScreen(
-                                onSuccessfullLogin = {
+                                onSuccessfulLogin = {
                                     navController.navigate("home")
                             },
                                 loginHandler = currentLoginHandler
                             )
                         }
                         composable("home"){
-                            HomeScreen( //TODO insert navigation routes here
+                            HomeScreen(
                                 onQrCodeButtonClick = {
-
-                                },
-                                onBarcodeButtonClick = {
-
+                                    navController.navigate("qr")
                                 },
                                 onTextButtonClick = {
 
                                 },
                                 onLogoutButtonClick = {
+                                    Auth.loggedInUser = null
                                     navController.navigate("entry")
                                 }
                             )
+                        }
+                        composable("qr"){
+                            qrScannerScreen(
+                                onSuccessfulScan = {
+                                    navController.navigate("product-edit")
+                                },
+                                scanHandler = currentScanHandler
+                            )
+                        }
+                        composable("product-edit"){
+                            ProductEdit()
                         }
                     }
 

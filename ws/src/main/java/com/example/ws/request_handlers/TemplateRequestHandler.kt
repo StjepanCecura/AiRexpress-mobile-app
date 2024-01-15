@@ -21,7 +21,6 @@ abstract class TemplateRequestHandler<T>  : RequestHandler<T> {
             ) {
                 if (response.isSuccessful) {
                     if (response.body().success){
-                        Log.i("response.body", "" + response.body())
                         responseListener.onSuccessfulResponse(response.body())
                     }else{
                         val errorBodyString = response.errorBody()?.string()
