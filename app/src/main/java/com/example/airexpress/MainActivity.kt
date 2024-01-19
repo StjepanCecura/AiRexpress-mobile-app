@@ -1,6 +1,7 @@
 package com.example.airexpress
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,6 +20,7 @@ import com.example.airexpress.screens.RegistrationScreen
 import com.example.airexpress.ui.theme.AiRexpressTheme
 import com.example.ws.network.ScannerHandler
 import com.example.qrscanner.screens.qrScannerScreen
+import com.example.textrecognitionscanner.textRecognitionScanner
 import com.example.ws.network.EmailPasswordLoginHandler
 
 class MainActivity : ComponentActivity() {
@@ -70,7 +72,7 @@ class MainActivity : ComponentActivity() {
                                     navController.navigate("qr")
                                 },
                                 onTextButtonClick = {
-
+                                    navController.navigate("textRecognition")
                                 },
                                 onLogoutButtonClick = {
                                     Auth.loggedInUser = null
@@ -88,6 +90,12 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("product-edit"){
                             ProductEdit()
+                        }
+                        composable("textRecognition"){
+                            Log.i("debugJa", "mainAct")
+                            textRecognitionScanner(
+
+                            )
                         }
                     }
 
