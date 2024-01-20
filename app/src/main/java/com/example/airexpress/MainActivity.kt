@@ -92,9 +92,11 @@ class MainActivity : ComponentActivity() {
                             ProductEdit()
                         }
                         composable("textRecognition"){
-                            Log.i("debugJa", "mainAct")
                             textRecognitionScanner(
-
+                                onSuccessfulScan = {
+                                    navController.navigate("product-edit")
+                                },
+                                scanHandler = currentScanHandler
                             )
                         }
                     }
