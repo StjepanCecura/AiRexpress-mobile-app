@@ -23,6 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.airexpress.R
+import com.example.textrecognitionscanner.textRecognitionScannerButton
 import com.example.ws.network.ScannerHandler
 
 @Composable
@@ -31,6 +32,28 @@ fun HomeScreen(
     onTextButtonClick: () -> Unit,
     onLogoutButtonClick: () -> Unit
 ){
+
+    val gumbovi: List<@Composable () -> Unit> = listOf(
+        {
+            Button(
+                onClick = onQrCodeButtonClick,
+                modifier = Modifier
+                    .fillMaxWidth(0.4f)
+                    .defaultMinSize(minWidth = 80.dp)
+                    .height(50.dp)
+            ) {
+                Text(
+                    text = "Scan QR code",
+                    color = Color.White,
+                    style = MaterialTheme.typography.button
+                )
+            }
+        },
+        {
+            textRecognitionScannerButton(onTextButtonClick)
+        },
+    )
+
     Scaffold (
         topBar = {
             Surface(
@@ -67,32 +90,13 @@ fun HomeScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ){
-            Button(
-                onClick = onQrCodeButtonClick,
-                modifier = Modifier
-                    .fillMaxWidth(0.4f)
-                    .defaultMinSize(minWidth = 80.dp)
-                    .height(50.dp)
-            ) {
-                Text(
-                    text = "Scan QR code",
-                    color = Color.White,
-                    style = MaterialTheme.typography.button
-                )
+
+            gumbovi.forEach { gumb -> Unit
+
+                gumb()
+
             }
-            Button(
-                onClick = onTextButtonClick,
-                modifier = Modifier
-                    .fillMaxWidth(0.4f)
-                    .defaultMinSize(minWidth = 80.dp)
-                    .height(50.dp)
-            ){
-                Text(
-                    text = "Scan text",
-                    color = Color.White,
-                    style = MaterialTheme.typography.button
-                )
-            }
+
             Button(
                 onClick = onLogoutButtonClick,
                 modifier = Modifier
