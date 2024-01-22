@@ -10,5 +10,7 @@ data class ScanProductData (
     val priceId: String?,
     val amount: Float?,
     val currency: String?,
+    val inventoryId: String?,
+    val inventoryVersion: Int?,
     val quantity: Int?
     )

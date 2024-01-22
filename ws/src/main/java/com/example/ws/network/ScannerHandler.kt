@@ -30,6 +30,8 @@ class ScannerHandler : Scanner{
                         responseData.priceId,
                         responseData.amount,
                         responseData.currency,
+                        responseData.inventoryId,
+                        responseData.inventoryVersion,
                         responseData.quantity
                     )
                     scanListener.onSuccessfulScan(scannedProduct)
