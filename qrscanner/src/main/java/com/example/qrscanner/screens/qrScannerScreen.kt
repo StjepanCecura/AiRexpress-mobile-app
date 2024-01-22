@@ -2,12 +2,18 @@ package com.example.qrscanner.screens
 
 import android.Manifest
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ws.network.ScannerHandler
@@ -16,6 +22,24 @@ import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionState
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
+
+@Composable
+fun qrScannerScreenButton(
+    onQrCodeButtonClick: () -> Unit
+){
+    Button(
+        onClick = onQrCodeButtonClick,
+        modifier = Modifier
+            .fillMaxWidth(0.4f)
+            .defaultMinSize(minWidth = 80.dp)
+            .height(50.dp)
+    ) {
+        Text(
+            text = "Scan QR code",
+            color = Color.White,
+        )
+    }
+}
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
