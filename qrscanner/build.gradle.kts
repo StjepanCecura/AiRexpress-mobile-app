@@ -59,7 +59,7 @@ dependencies {
     implementation("androidx.camera:camera-lifecycle:1.3.0-alpha07")
     implementation("androidx.camera:camera-view:1.3.0-alpha07")
     implementation("androidx.camera:camera-extensions:1.3.0-alpha07")
-    implementation("com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0")
+    implementation("com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.compose.material3:material3:1.1.2")
     testImplementation("junit:junit:4.13.2")
