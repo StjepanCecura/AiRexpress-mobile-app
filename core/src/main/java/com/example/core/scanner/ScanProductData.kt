@@ -4,11 +4,13 @@ data class ScanProductData (
     val success: Boolean,
     val productID: String?,
     val version: Int?,
-    val name: String?,
-    val description: String?,
+    var name: String?,
+    var description: String?,
     val variantKey: String?,
     val priceId: String?,
-    val amount: Float?,
+    var amount: Float?,
     val currency: String?,
-    val quantity: Int?
+    val inventoryId: String?,
+    val inventoryVersion: Int?,
+    var quantity: Int?
     )

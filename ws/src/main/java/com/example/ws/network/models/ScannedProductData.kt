@@ -12,5 +12,7 @@ class ScannedProductData (
     @SerializedName("priceId") var priceId: String? = null,
     @SerializedName("amount") var amount: Float? = null,
     @SerializedName("currency") var currency: String? = null,
+    @SerializedName("inventoryId") var inventoryId: String? = null,
+    @SerializedName("inventoryVersion") var inventoryVersion: Int? = null,
     @SerializedName("quantity") var quantity: Int? = null,
 )

@@ -31,6 +31,10 @@ import com.example.core.scanner.viewmodels.ScanViewModel
 import com.example.qrscanner.Scanner
 import com.example.ws.network.ScannerHandler
 import kotlinx.coroutines.launch
+import com.google.mlkit.vision.barcode.common.Barcode
+import com.google.mlkit.vision.codescanner.GmsBarcodeScanner
+import com.google.mlkit.vision.codescanner.GmsBarcodeScannerOptions
+import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
 
 @Composable
 fun CameraScan(
@@ -38,9 +42,8 @@ fun CameraScan(
     onSuccessfulCameraScan: () -> Unit,
     scanHandlerCamera: ScannerHandler
 ){
-    lateinit var scanner: Scanner
     val context = LocalContext.current
-    scanner = Scanner(context)
+    val scanner = remember { Scanner(context) }
 
     Surface(
         modifier = Modifier.fillMaxSize()

@@ -89,7 +89,11 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable("product-edit"){
-                            ProductEdit()
+                            ProductEdit(
+                                onSuccessfulEdit = {
+                                        newEdit -> navController.navigate("home")
+                                }
+                            )
                         }
                         composable("textRecognition"){
                             textRecognitionScanner(
