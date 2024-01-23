@@ -71,16 +71,14 @@ fun ProductEdit(
             StyledTextField(
                 value = productQuantity,
                 label = "Product quantity",
-                onValueChange = { viewModel.productQuantity.value = it },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+                onValueChange = { viewModel.productQuantity.value = it }
             )
         }
         if (productAmount != null) {
             StyledTextField(
                 value = productAmount,
                 label = "Product amount",
-                onValueChange = { viewModel.productAmount.value = it },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+                onValueChange = { viewModel.productAmount.value = it }
             )
         }
         StyledButton(
